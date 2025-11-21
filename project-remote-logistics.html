@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Remote Driving Contactless Logistics Platform — Jingbo Zhang</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="index.html">← Back to Portfolio</a>
+    </div>
+  </nav>
+
+  <main class="container my-4 my-md-5">
+    <article class="bg-white p-4 p-md-5 rounded-4 shadow-sm">
+      <header class="mb-4">
+        <h1 class="h2">Remote Driving Contactless Logistics Platform for Epidemic Scenarios</h1>
+        <p class="text-muted mb-1">Shanghai Jiao Tong University — Team Project</p>
+        <p class="text-muted">Role: Team Lead & System Integration • Tools: ROS, C++, Python, OpenCV</p>
+      </header>
+
+      <section class="mb-4">
+        <h2 class="h5">Introduction / Social Motivation</h2>
+        <p>
+          During severe epidemic outbreaks, logistics workers who deliver medical supplies, food, and
+          equipment to high-risk areas face significant exposure. Our project proposed a contactless
+          logistics platform in which an operator remotely drives a small electric vehicle through
+          hospital corridors or quarantine zones, reducing unnecessary person-to-person contact while
+          maintaining reliable delivery service.
+        </p>
+      </section>
+
+      <section class="mb-4">
+        <h2 class="h5">System Design & Methods</h2>
+        <ul>
+          <li>
+            Built a ROS-based teleoperation architecture connecting on-vehicle sensors (cameras, LiDAR)
+            with a remote operator station over a wireless network.
+          </li>
+          <li>
+            Implemented a visual assistance interface that fused multi-view camera feeds with predicted
+            trajectories and key overlays (e.g., distance to obstacles, corridor boundaries).
+          </li>
+          <li>
+            Mapped joystick inputs from the operator to low-level motor and steering commands, including
+            smooth acceleration/braking profiles.
+          </li>
+          <li>
+            Added safety layers such as soft geofencing, maximum speed enforcement, and a software
+            emergency stop.
+          </li>
+        </ul>
+      </section>
+
+      <section class="mb-4">
+        <h2 class="h5">Results / Evaluation</h2>
+        <p>
+          We evaluated the platform in a mock hospital corridor with narrow passages and multiple turns.
+          The system maintained end-to-end control latency within approximately 150&nbsp;ms while
+          streaming live video and sensor data. Remote operators were able to complete delivery routes
+          with centimeter-level tracking accuracy and no collisions, even under limited visibility.
+        </p>
+        <p>
+          The project was recognized at a national-level innovation competition for its potential to
+          support safer logistics workflows in future public health emergencies.
+        </p>
+      </section>
+
+      <section class="mb-4">
+        <h2 class="h5">My Contribution</h2>
+        <ul>
+          <li>Led the overall system architecture and task planning as team leader.</li>
+          <li>
+            Implemented ROS nodes for trajectory prediction visualization and sensor fusion on the
+            operator interface.
+          </li>
+          <li>
+            Integrated the onboard embedded controller with the remote control station and tuned
+            the control command mapping for smooth teleoperation.
+          </li>
+          <li>
+            Designed and executed test scenarios, collected performance metrics, and prepared the
+            technical documentation and presentation materials.
+          </li>
+        </ul>
+      </section>
+
+      <section class="mb-4">
+        <h2 class="h5">Artifacts</h2>
+        <ul>
+          <li>ROS package for teleoperation and visual assistance.</li>
+          <li>Demo video showing remote deliveries in a corridor environment.</li>
+          <li>Poster and written report summarizing the system and evaluation results.</li>
+        </ul>
+      </section>
+
+      <footer class="text-muted small">
+        © Jingbo Zhang — This page is part of the engineering portfolio hosted at
+        <a href="index.html">jbzhang23.github.io</a>.
+      </footer>
+    </article>
+  </main>
+</body>
+</html>
