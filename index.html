@@ -137,4 +137,215 @@
                 and integrated a graph-based SLAM module so that the controller could operate in a partially unknown map.
               </p>
 
-              <p><strong>Results / Evaluation.</strong> In simul
+              <p><strong>Results / Evaluation.</strong> In simulation, the controller achieved stable tracking with a lateral
+                error under 0.15&nbsp;m RMS on curved roads and recovered gracefully from injected sensor noise and
+                small disturbances. Compared to a baseline PID controller, the LQR design reduced overshoot and
+                improved settling time, especially when the map was updated online via SLAM.</p>
+
+              <p><strong>My Contribution / Role.</strong> I implemented the full estimation–control pipeline, including the
+                EKF derivation, discrete-time LQR design, and ROS-based integration. I also generated the evaluation
+                metrics and plots used to compare different controller tunings.</p>
+
+              <div class="mt-auto mb-2">
+                <span class="badge text-bg-secondary badge-skill">EKF</span>
+                <span class="badge text-bg-secondary badge-skill">LQR</span>
+                <span class="badge text-bg-secondary badge-skill">SLAM</span>
+                <span class="badge text-bg-secondary badge-skill">MATLAB / Simulink</span>
+                <span class="badge text-bg-secondary badge-skill">ROS</span>
+              </div>
+              <a class="btn btn-sm btn-outline-primary" href="#" target="_blank">Report / Code (GitHub)</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="col">
+          <div class="card project-card h-100">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Remote Driving Contactless Logistics Platform for Epidemic Scenarios</h5>
+              <p class="card-subtitle text-muted mb-2">Shanghai Jiao Tong University — Team Project</p>
+
+              <div class="mb-3 visual-box">
+                Visual: system architecture diagram showing remote operator, communication link, and logistics vehicle with cameras and sensors.
+              </div>
+
+              <p><strong>Introduction / Social Value.</strong> During severe epidemics, front-line logistics workers face high
+                exposure risk. Our project proposed a contactless logistics platform that allows an operator to remotely
+                drive a small electric vehicle to deliver goods in hospitals or quarantine zones, reducing unnecessary
+                person-to-person contact.</p>
+
+              <p><strong>Design / Method.</strong> We built a ROS-based teleoperation system that streamed multi-view camera
+                feeds and LiDAR data to the operator, overlaid predicted trajectories, and provided a visual assistance HUD.
+                A joystick interface translated the operator's commands into low-level motor and steering signals, while
+                safety modules enforced speed limits and soft geofencing.</p>
+
+              <p><strong>Results / Evaluation.</strong> In field tests on a mock hospital corridor, the platform completed
+                delivery routes with centimeter-level tracking accuracy and maintained stable video and control latency
+                within 150&nbsp;ms. The system was recognized at a national-level innovation competition for its potential
+                to support safe logistics in public health emergencies.</p>
+
+              <p><strong>My Contribution / Role.</strong> As team lead, I coordinated system architecture, implemented the
+                ROS nodes for trajectory prediction overlay, and handled integration between the vehicle's embedded
+                controller and the remote user interface. I also led the testing protocol and documented the performance
+                metrics.</p>
+
+              <div class="mt-auto mb-2">
+                <span class="badge text-bg-secondary badge-skill">ROS</span>
+                <span class="badge text-bg-secondary badge-skill">C++</span>
+                <span class="badge text-bg-secondary badge-skill">Computer Vision</span>
+                <span class="badge text-bg-secondary badge-skill">Human–Robot Interaction</span>
+              </div>
+              <a class="btn btn-sm btn-outline-primary" href="#" target="_blank">Demo Video / Poster</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="col">
+          <div class="card project-card h-100">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Seamless Gait Transition via Optimal Control & Reinforcement Learning</h5>
+              <p class="card-subtitle text-muted mb-2">Quadruped Locomotion Research</p>
+
+              <div class="mb-3 visual-box">
+                Visual: sequence of frames or phase plot showing quadruped transitioning from trot to bound without loss of stability.
+              </div>
+
+              <p><strong>Problem / Motivation.</strong> Legged robots often need to switch between different gaits (for example,
+                from a slow walk to a faster trot) when terrain or speed requirements change. Abrupt transitions can lead to
+                loss of balance or large tracking errors. The goal of this project was to design a controller that produces
+                smooth, dynamically consistent gait transitions.</p>
+
+              <p><strong>Idea & Design.</strong> I combined model-based optimal control with reinforcement learning. First,
+                I used trajectory optimization to generate reference motions that satisfied the robot's dynamic constraints.
+                Then, I trained a policy that learned to track these references and interpolate between them, using a reward
+                that balanced tracking accuracy, energy efficiency, and foot-slip penalties.</p>
+
+              <p><strong>Evidence / Results.</strong> In simulation, the controller achieved smooth transitions between walking,
+                trotting, and bounding at different speeds, with reduced body pitching and improved foot clearance compared to
+                a purely heuristic state machine. The learned policy generalized to moderate modeling errors and small terrain
+                irregularities without re-tuning.</p>
+
+              <p><strong>Contribution / Role.</strong> I implemented the dynamics interface, designed the reward function, and
+                evaluated performance using center-of-mass tracking error and contact consistency metrics. I also generated
+                visualizations and videos to analyze how the learned policy blended between optimized gait primitives.</p>
+
+              <div class="mt-auto mb-2">
+                <span class="badge text-bg-secondary badge-skill">Optimal Control</span>
+                <span class="badge text-bg-secondary badge-skill">Reinforcement Learning</span>
+                <span class="badge text-bg-secondary badge-skill">Quadruped Locomotion</span>
+                <span class="badge text-bg-secondary badge-skill">Python</span>
+              </div>
+              <a class="btn btn-sm btn-outline-primary" href="#" target="_blank">Slides / Simulation Clips</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="col">
+          <div class="card project-card h-100">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Pneumatic Artificial Muscle-based Flexible Suspension</h5>
+              <p class="card-subtitle text-muted mb-2">Mechatronics & Vibration Control Design</p>
+
+              <div class="mb-3 visual-box">
+                Visual: photo or CAD rendering of the suspension test rig with pneumatic artificial muscles and sensors.
+              </div>
+
+              <p><strong>Introduction / Objective.</strong> Traditional passive suspensions have limited ability to adapt to
+                different road conditions or payloads. This project explored a flexible suspension concept using pneumatic
+                artificial muscles (PAMs) as tunable, compliant actuators to improve ride comfort and vibration isolation.</p>
+
+              <p><strong>Design / Method.</strong> I modeled the quarter-car dynamics with PAM elements and designed a feedback
+                controller that adjusted chamber pressure based on measured acceleration and displacement. The prototype
+                included pressure regulators, displacement sensors, and an embedded controller that executed the control law
+                in real time.</p>
+
+              <p><strong>Results / Evaluation.</strong> Bench-top experiments with sinusoidal and step-like road profiles showed
+                a noticeable reduction in transmitted acceleration compared to a baseline passive spring-damper system. The
+                system could trade off stiffness and comfort by changing the pressure set-points, demonstrating the potential
+                of PAM-based suspensions for small vehicles or assistive devices.</p>
+
+              <p><strong>My Contribution / Role.</strong> I led the modeling and control design, implemented the real-time
+                controller, and performed system identification to obtain PAM stiffness curves. I also designed plots and
+                frequency-response visualizations to communicate the performance improvements.</p>
+
+              <div class="mt-auto mb-2">
+                <span class="badge text-bg-secondary badge-skill">Pneumatic Artificial Muscles</span>
+                <span class="badge text-bg-secondary badge-skill">Vibration Control</span>
+                <span class="badge text-bg-secondary badge-skill">Embedded Systems</span>
+                <span class="badge text-bg-secondary badge-skill">MATLAB</span>
+              </div>
+              <a class="btn btn-sm btn-outline-primary" href="#" target="_blank">Report / Experiment Plots</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resume -->
+    <section id="resume" class="mb-5">
+      <h2 class="section-title">Resume</h2>
+      <p>
+        This portfolio is accompanied by a concise one-page resume tailored to robotics and control roles.
+        The resume highlights technical skills, research experience, and relevant industry internships.
+      </p>
+      <a class="btn btn-primary" href="resume.pdf" target="_blank">View 1-page Resume (PDF)</a>
+      <p class="mt-2 text-muted small">
+        (Please place <code>resume.pdf</code> in the repository root so this link works on GitHub Pages.)
+      </p>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="mb-5">
+      <h2 class="section-title">Contact</h2>
+      <ul class="list-unstyled">
+        <li>Email: <a href="mailto:your.email@andrew.cmu.edu">your.email@andrew.cmu.edu</a></li>
+        <li>LinkedIn: <a href="#" target="_blank">linkedin.com/in/your-profile</a></li>
+        <li>GitHub: <a href="#" target="_blank">github.com/your-handle</a></li>
+      </ul>
+      <p class="text-muted small">
+        (Replace the placeholders above with your actual contact information before sharing this portfolio.)
+      </p>
+    </section>
+
+    <!-- Justification Memo -->
+    <section id="memo" class="mb-5">
+      <h2 class="section-title">Justification Memo</h2>
+      <p>
+        For this course, I prepared a separate justification memo that explains how this portfolio is targeted
+        to employers in robotics and control engineering. The memo discusses my audience analysis, project
+        selection, and document design decisions (navigation, visuals, typography).
+      </p>
+      <ul>
+        <li>Why these four projects best represent my skills in modeling, control, and real-time implementation</li>
+        <li>How the project descriptions emphasize impact, social value, and my specific role</li>
+        <li>How the layout, headings, and visuals support quick scanning by technical recruiters</li>
+      </ul>
+      <a class="btn btn-outline-secondary" href="memo.pdf" target="_blank">Open Justification Memo (PDF)</a>
+      <p class="text-muted small">
+        (If required, upload <code>memo.pdf</code> to the repository so this link works.)
+      </p>
+    </section>
+
+    <!-- Footer / Disclosure -->
+    <footer class="py-4 border-top">
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center">
+        <div class="mb-2 mb-md-0">© <span id="year"></span> Jingbo Zhang • Last updated: <span id="updated"></span></div>
+        <div class="">
+          <strong>GAI/LLM Disclosure:</strong>
+          Portions of this website’s wording or structure were assisted by generative AI tools.
+          All content was reviewed and validated by the author. If code or results were AI-assisted,
+          they are noted in the corresponding sections.
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('updated').textContent = new Date().toISOString().slice(0,10);
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
