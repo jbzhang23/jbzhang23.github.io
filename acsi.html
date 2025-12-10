@@ -18,46 +18,54 @@
       <header class="mb-4">
         <h1 class="h2">AutoReFly: Autonomous Recovery of a Vehicle-Mounted UAV</h1>
         <p class="text-muted mb-1">Carnegie Mellon University — Team Project</p>
-        <p class="text-muted">Role: Team Lead & Controller Develop & Hardware implementation • Tools: ROS, C++, Python, OpenCV</p>
+        <p class="text-muted">Role: Team Lead & Controller Develop & Hardware implementation • Tools: Python, C, Mujoco</p>
       </header>
 
       <div class="text-center mb-4">
         <video controls class="rounded shadow-sm" style="max-width: 700px; width: 100%;">
-          <source src="images/remote.mp4" type="video/mp4">
+          <source src="images/dynamic_landing.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
-        <div class="text-muted small mt-2">Demo Video: Project demonstration clip</div>
+        <div class="text-muted small mt-2">Demo Video: Dynamic platform landing</div>
+      </div>
+
+      <div class="text-center mb-4">
+        <video controls class="rounded shadow-sm" style="max-width: 700px; width: 100%;">
+          <source src="images/obstacle_avoidance.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <div class="text-muted small mt-2">Demo Video: 3D obstacle avoidance</div>
       </div>
 
       <section class="mb-4">
         <h2 class="h5">Introduction / Social Motivation</h2>
         <p>
-          During severe epidemic outbreaks, logistics workers who deliver medical supplies, food, and
-          equipment to high-risk areas face significant exposure. Our project proposed a contactless
-          logistics platform in which an operator remotely drives a small electric vehicle through
-          hospital corridors or quarantine zones, reducing unnecessary person-to-person contact while
-          maintaining reliable delivery service.
+          Autonomous recovery of UAVs onto moving ground vehicles would enable persistent inspection, 
+          mobile sensing, and flexible delivery without needing fixed infrastructure. This is especially 
+          valuable in scenarios where deploying large ground stations is impractical or where vehicles must 
+          operate over long distances. However, performing dynamic landing on a small, resource-limited 
+          quadrotor like the Crazyflie is challenging: the platform has tight thrust margins, is sensitive 
+          to payload changes, and depends on external localization and a wireless link. Real-world issues 
+          such as localization noise, communication delay, and unpredictable vehicle motion motivate a control 
+          framework that is both safety-aware and deployable on modest hardware.
         </p>
       </section>
 
       <section class="mb-4">
         <h2 class="h5">System Design & Methods</h2>
         <ul>
+          <li>Built AutoReFly, a Crazyflie-based system integrating nonlinear MPC (NMPC) for tracking, obstacle avoidance, payload transport, and dynamic landing.</li>
           <li>
-            Built a ROS-based teleoperation architecture connecting on-vehicle sensors (cameras, LiDAR)
-            with a remote operator station over a wireless network.
+            Modeled the UAV as a 13-state rigid body and formulated the NMPC problem in CasADi with constraints for thrust, orientation, and collision avoidance.
           </li>
           <li>
-            Implemented a visual assistance interface that fused multi-view camera feeds with predicted
-            trajectories and key overlays (e.g., distance to obstacles, corridor boundaries).
+            Evaluated three control abstraction levels—low-level wrench control, high-level position control, and mid-level velocity-tracking—to determine a hardware-feasible interface.
           </li>
           <li>
-            Mapped joystick inputs from the operator to low-level motor and steering commands, including
-            smooth acceleration/braking profiles.
+            Selected velocity-command NMPC to handle communication delay, radio jitter, and Crazyflie thrust limitations.
           </li>
           <li>
-            Added safety layers such as soft geofencing, maximum speed enforcement, and a software
-            emergency stop.
+            Integrated Lighthouse localization, Ranger Deck sensing, and a moving UGV carrying a “dead drone” as the landing target.
           </li>
         </ul>
       </section>
@@ -65,32 +73,35 @@
       <section class="mb-4">
         <h2 class="h5">Results / Evaluation</h2>
         <p>
-          We evaluated the platform in a mock hospital corridor with narrow passages and multiple turns.
-          The system maintained end-to-end control latency within approximately 150&nbsp;ms while
-          streaming live video and sensor data. Remote operators were able to complete delivery routes
-          with centimeter-level tracking accuracy and no collisions, even under limited visibility.
+          In simulation, the full rigid-body NMPC produced realistic tracking and landing behaviors, 
+          but we found that low-level force/torque commands were highly sensitive to realistic communication delays, 
+          making them unsuitable for deployment on the Crazyflie. This motivated the shift to a velocity-command 
+          NMPC interface. On hardware, we systematically validated each sensing and actuation component: 
+          Lighthouse localization provided stable 3D pose at around 50 Hz for both UAV and moving platform; 
+          the Ranger Deck reliably triggered collision-avoidance motions while maintaining altitude; 
+          and IMU-based stabilization kept the Crazyflie hovering robustly even under small disturbances. 
+          These experiments confirmed that the sensing stack and control abstraction are adequate foundations for future full autonomous recovery demonstrations.
         </p>
         <p>
-          The project was recognized at a national-level innovation competition for its potential to
-          support safer logistics workflows in future public health emergencies.
+          The project was recognized as "The Best Project" of Fall 2025 at the Mechancial Engineering department, CMU.
         </p>
       </section>
 
       <section class="mb-4">
         <h2 class="h5">My Contribution</h2>
         <ul>
-          <li>Led the overall system architecture and task planning as team leader.</li>
+          <li>Led the control modeling and NMPC formulation, including rigid-body dynamics construction and constraint design in CasADi.</li>
           <li>
-            Implemented ROS nodes for trajectory prediction visualization and sensor fusion on the
-            operator interface.
+            Conducted analysis comparing three control abstraction layers, identifying failure modes of force-level control under delay and validating the velocity-tracking approach.
           </li>
           <li>
-            Integrated the onboard embedded controller with the remote control station and tuned
-            the control command mapping for smooth teleoperation.
+            Evaluated three control abstraction levels—low-level wrench control, high-level position control, and mid-level velocity-tracking—to determine a hardware-feasible interface.
           </li>
           <li>
-            Designed and executed test scenarios, collected performance metrics, and prepared the
-            technical documentation and presentation materials.
+            Implemented the NMPC-to-Crazyflie velocity command pipeline, enabling sim-to-real execution through onboard control APIs and firmware flashing.
+          </li>
+          <li>
+            Assisted in experimental testing and debugging.
           </li>
         </ul>
       </section>
