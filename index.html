@@ -106,12 +106,12 @@
       </div>
     </section>
 
-        <!-- Projects -->
+    <!-- Projects -->
     <section id="projects" class="mb-5">
       <h2 class="section-title">Projects & Experiences</h2>
       <p class="text-muted">
-        Each project below follows an IMRD / IDEC-style structure, highlights social value, and clarifies my specific role.
-        Click a project to open a full-page description.
+        Each card below links to a full project page with IMRD-style details, methods, and results.
+        On this homepage, I highlight the core idea, impact, and tools at a glance.
       </p>
 
       <div class="row row-cols-1 row-cols-md-2 g-4">
@@ -130,25 +130,10 @@
                 Visual: map + trajectory plot showing EKF-SLAM localization and LQR-controlled path tracking.
               </div>
 
-              <p><strong>Introduction / Problem.</strong> The goal of this course project was to enable an autonomous ground
-                vehicle to track a reference path in an urban-like environment using noisy sensor data. Reliable
-                localization and robust lateral control are critical for reducing accidents and improving traffic efficiency
-                as autonomous vehicles become more common.</p>
-
-              <p><strong>Method / Design.</strong> I modeled the vehicle using a nonlinear bicycle model and implemented an
-                Extended Kalman Filter that fused wheel odometry, IMU, and range measurements into a consistent state
-                estimate. On top of the linearized dynamics, I designed an LQR controller for lateral and heading tracking
-                and integrated a graph-based SLAM module so that the controller could operate in a partially unknown map.
+              <p class="mb-3">
+                Designed an EKF–LQR pipeline so an autonomous ground vehicle can track paths robustly
+                under noisy sensing, using SLAM-based localization in an urban-like environment.
               </p>
-
-              <p><strong>Results / Evaluation.</strong> In simulation, the controller achieved stable tracking with a lateral
-                error under 0.15&nbsp;m RMS on curved roads and recovered gracefully from injected sensor noise and
-                small disturbances. Compared to a baseline PID controller, the LQR design reduced overshoot and
-                improved settling time, especially when the map was updated online via SLAM.</p>
-
-              <p><strong>My Contribution / Role.</strong> I implemented the full estimation–control pipeline, including the
-                EKF derivation, discrete-time LQR design, and ROS-based integration. I also generated the evaluation
-                metrics and plots used to compare different controller tunings.</p>
 
               <div class="mt-auto mb-2">
                 <span class="badge text-bg-secondary badge-skill">EKF</span>
@@ -179,25 +164,10 @@
                 Visual: system architecture diagram showing remote operator, communication link, and logistics vehicle with cameras and sensors.
               </div>
 
-              <p><strong>Introduction / Social Value.</strong> During severe epidemics, front-line logistics workers face high
-                exposure risk. Our project proposed a contactless logistics platform that allows an operator to remotely
-                drive a small electric vehicle to deliver goods in hospitals or quarantine zones, reducing unnecessary
-                person-to-person contact.</p>
-
-              <p><strong>Design / Method.</strong> We built a ROS-based teleoperation system that streamed multi-view camera
-                feeds and LiDAR data to the operator, overlaid predicted trajectories, and provided a visual assistance HUD.
-                A joystick interface translated the operator's commands into low-level motor and steering signals, while
-                safety modules enforced speed limits and soft geofencing.</p>
-
-              <p><strong>Results / Evaluation.</strong> In field tests on a mock hospital corridor, the platform completed
-                delivery routes with centimeter-level tracking accuracy and maintained stable video and control latency
-                within 150&nbsp;ms. The system was recognized at a national-level innovation competition for its potential
-                to support safe logistics in public health emergencies.</p>
-
-              <p><strong>My Contribution / Role.</strong> As team lead, I coordinated system architecture, implemented the
-                ROS nodes for trajectory prediction overlay, and handled integration between the vehicle's embedded
-                controller and the remote user interface. I also led the testing protocol and documented the performance
-                metrics.</p>
+              <p class="mb-3">
+                Built a ROS-based teleoperation platform that lets operators remotely drive logistics
+                vehicles in high-risk environments, reducing exposure during epidemic scenarios.
+              </p>
 
               <div class="mt-auto mb-2">
                 <span class="badge text-bg-secondary badge-skill">ROS</span>
@@ -227,24 +197,10 @@
                 Visual: sequence of frames or phase plot showing quadruped transitioning from trot to bound without loss of stability.
               </div>
 
-              <p><strong>Problem / Motivation.</strong> Legged robots often need to switch between different gaits (for example,
-                from a slow walk to a faster trot) when terrain or speed requirements change. Abrupt transitions can lead to
-                loss of balance or large tracking errors. The goal of this project was to design a controller that produces
-                smooth, dynamically consistent gait transitions.</p>
-
-              <p><strong>Idea & Design.</strong> I combined model-based optimal control with reinforcement learning. First,
-                I used trajectory optimization to generate reference motions that satisfied the robot's dynamic constraints.
-                Then, I trained a policy that learned to track these references and interpolate between them, using a reward
-                that balanced tracking accuracy, energy efficiency, and foot-slip penalties.</p>
-
-              <p><strong>Evidence / Results.</strong> In simulation, the controller achieved smooth transitions between walking,
-                trotting, and bounding at different speeds, with reduced body pitching and improved foot clearance compared to
-                a purely heuristic state machine. The learned policy generalized to moderate modeling errors and small terrain
-                irregularities without re-tuning.</p>
-
-              <p><strong>Contribution / Role.</strong> I implemented the dynamics interface, designed the reward function, and
-                evaluated performance using center-of-mass tracking error and contact consistency metrics. I also generated
-                visualizations and videos to analyze how the learned policy blended between optimized gait primitives.</p>
+              <p class="mb-3">
+                Combined trajectory optimization with RL to achieve smooth gait transitions
+                (walk–trot–bound) for quadruped robots, improving stability and reducing body pitching.
+              </p>
 
               <div class="mt-auto mb-2">
                 <span class="badge text-bg-secondary badge-skill">Optimal Control</span>
@@ -274,23 +230,10 @@
                 Visual: photo or CAD rendering of the suspension test rig with pneumatic artificial muscles and sensors.
               </div>
 
-              <p><strong>Introduction / Objective.</strong> Traditional passive suspensions have limited ability to adapt to
-                different road conditions or payloads. This project explored a flexible suspension concept using pneumatic
-                artificial muscles (PAMs) as tunable, compliant actuators to improve ride comfort and vibration isolation.</p>
-
-              <p><strong>Design / Method.</strong> I modeled the quarter-car dynamics with PAM elements and designed a feedback
-                controller that adjusted chamber pressure based on measured acceleration and displacement. The prototype
-                included pressure regulators, displacement sensors, and an embedded controller that executed the control law
-                in real time.</p>
-
-              <p><strong>Results / Evaluation.</strong> Bench-top experiments with sinusoidal and step-like road profiles showed
-                a noticeable reduction in transmitted acceleration compared to a baseline passive spring-damper system. The
-                system could trade off stiffness and comfort by changing the pressure set-points, demonstrating the potential
-                of PAM-based suspensions for small vehicles or assistive devices.</p>
-
-              <p><strong>My Contribution / Role.</strong> I led the modeling and control design, implemented the real-time
-                controller, and performed system identification to obtain PAM stiffness curves. I also designed plots and
-                frequency-response visualizations to communicate the performance improvements.</p>
+              <p class="mb-3">
+                Prototyped a PAM-based suspension that can adapt stiffness via pressure control,
+                reducing transmitted vibration compared to a passive spring–damper setup.
+              </p>
 
               <div class="mt-auto mb-2">
                 <span class="badge text-bg-secondary badge-skill">Pneumatic Artificial Muscles</span>
@@ -306,6 +249,7 @@
         </div>
       </div>
     </section>
+
 
     <!-- Resume -->
     <section id="resume" class="mb-5">
